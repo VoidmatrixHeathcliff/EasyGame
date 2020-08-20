@@ -1,2 +1,2 @@
 # EasyLua
-Some libraries for Lua to develop a game. (Windows Platform Only !)
+Some libraries for Lua to develop games. (Windows Platform Only !)
