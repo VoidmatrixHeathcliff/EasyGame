@@ -1,6 +1,7 @@
 # EasyAudio开发文档
 
 编译需要第三方库[SDL2.0](http://www.libsdl.org/)和[SDL_mixer2.0](http://www.libsdl.org/projects/SDL_mixer/)支持
+***
 
 > ## Init
 初始化声音库
