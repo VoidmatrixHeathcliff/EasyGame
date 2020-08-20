@@ -2,11 +2,11 @@
 #include <graphics.h>
 #include <Windows.h>
 
-HWND hwnd;      // ´°¿Ú¾ä±ú
+HWND hwnd;      // çª—å£å¥æŸ„
 
-MOUSEMSG msg;   // Êó±êÏûÏ¢
+MOUSEMSG msg;   // é¼ æ ‡æ¶ˆæ¯
 
-// ³õÊ¼»¯´°¿Ú£¬2²ÎÊı£º´°¿Ú¿í¶È¡¢´°¿Ú¸ß¶È
+// åˆå§‹åŒ–çª—å£ï¼Œ2å‚æ•°ï¼šçª—å£å®½åº¦ã€çª—å£é«˜åº¦
 extern "C" int init(lua_State * L)
 {
     int width = lua_tonumber(L, 1);
@@ -15,21 +15,21 @@ extern "C" int init(lua_State * L)
     return 0;
 }
 
-// Ê¹ÓÃµ±Ç°±³¾°É«Çå¿ÕÆÁÄ»£¬ÎŞ²ÎÊı
+// ä½¿ç”¨å½“å‰èƒŒæ™¯è‰²æ¸…ç©ºå±å¹•ï¼Œæ— å‚æ•°
 extern "C" int clear(lua_State * L)
 {
     cleardevice();
     return 0;
 }
 
-// ¹Ø±Õµ±Ç°´°¿Ú£¬ÎŞ²ÎÊı
+// å…³é—­å½“å‰çª—å£ï¼Œæ— å‚æ•°
 extern "C" int close(lua_State * L)
 {
     closegraph();
     return 0;
 }
 
-// ÉèÖÃ´°¿Ú±êÌâ£¬1²ÎÊı£º±êÌâ×Ö·û´®
+// è®¾ç½®çª—å£æ ‡é¢˜ï¼Œ1å‚æ•°ï¼šæ ‡é¢˜å­—ç¬¦ä¸²
 extern "C" int setTitle(lua_State * L)
 {
     const char* title = lua_tostring(L, 1);
@@ -37,7 +37,7 @@ extern "C" int setTitle(lua_State * L)
     return 0;
 }
 
-// ÉèÖÃ±³¾°ÑÕÉ«£¬3²ÎÊı£ºR¡¢G¡¢B
+// è®¾ç½®èƒŒæ™¯é¢œè‰²ï¼Œ3å‚æ•°ï¼šRã€Gã€B
 extern "C" int setBGColor(lua_State * L)
 {
     int R = lua_tonumber(L, 1);
@@ -47,8 +47,8 @@ extern "C" int setBGColor(lua_State * L)
     return 0;
 }
 
-// ÉèÖÃ±³¾°ÑÕÉ«Ìî³äÄ£Ê½£¬1²ÎÊı£ºÄ£Ê½Ãû
-// ¿ÉÑ¡ÖµÎª£ºOPAQUE£¨±³¾°ÓÃµ±Ç°±³¾°É«Ìî³ä£©£¬TRANSPARENT£¨Í¸Ã÷±³¾°£©
+// è®¾ç½®èƒŒæ™¯é¢œè‰²å¡«å……æ¨¡å¼ï¼Œ1å‚æ•°ï¼šæ¨¡å¼å
+// å¯é€‰å€¼ä¸ºï¼šOPAQUEï¼ˆèƒŒæ™¯ç”¨å½“å‰èƒŒæ™¯è‰²å¡«å……ï¼‰ï¼ŒTRANSPARENTï¼ˆé€æ˜èƒŒæ™¯ï¼‰
 extern "C" int setBGMode(lua_State * L)
 {
     const char* mode = lua_tostring(L, 1);
@@ -63,7 +63,7 @@ extern "C" int setBGMode(lua_State * L)
     return 0;
 }
 
-// ÉèÖÃÌî³äÑÕÉ«£¬3²ÎÊı£ºR¡¢G¡¢B
+// è®¾ç½®å¡«å……é¢œè‰²ï¼Œ3å‚æ•°ï¼šRã€Gã€B
 extern "C" int setFillColor(lua_State * L)
 {
     int R = lua_tonumber(L, 1);
@@ -73,7 +73,7 @@ extern "C" int setFillColor(lua_State * L)
     return 0;
 }
 
-// ÉèÖÃ»­ÏßÑÕÉ«£¬3²ÎÊı£ºR¡¢G¡¢B
+// è®¾ç½®ç”»çº¿é¢œè‰²ï¼Œ3å‚æ•°ï¼šRã€Gã€B
 extern "C" int setLineColor(lua_State * L)
 {
     int R = lua_tonumber(L, 1);
@@ -83,7 +83,7 @@ extern "C" int setLineColor(lua_State * L)
     return 0;
 }
 
-// ÉèÖÃ×ÖÌåÑÕÉ«£¬3²ÎÊı£ºR¡¢G¡¢B
+// è®¾ç½®å­—ä½“é¢œè‰²ï¼Œ3å‚æ•°ï¼šRã€Gã€B
 extern "C" int setTextColor(lua_State * L)
 {
     int R = lua_tonumber(L, 1);
@@ -93,8 +93,8 @@ extern "C" int setTextColor(lua_State * L)
     return 0;
 }
 
-// ÉèÖÃÌî³äÑÕÉ«£¬1²ÎÊı£ºÀàĞÍÃû
-// ¿ÉÑ¡ÖµÎª£º"SOLID"£¨ÊµÏß£©£¬"DASH"£¨----£©£¬"DOT"£¨¡¤¡¤¡¤¡¤£©£¬"DASHDOT"£¨-¡¤-¡¤-¡¤-£©£¬"DASHDOTDOT"£¨-¡¤¡¤-¡¤¡¤-¡¤¡¤£©£¬"NULL"£¨²»¿É¼û£©
+// è®¾ç½®å¡«å……é¢œè‰²ï¼Œ1å‚æ•°ï¼šç±»å‹å
+// å¯é€‰å€¼ä¸ºï¼š"SOLID"ï¼ˆå®çº¿ï¼‰ï¼Œ"DASH"ï¼ˆ----ï¼‰ï¼Œ"DOT"ï¼ˆÂ·Â·Â·Â·ï¼‰ï¼Œ"DASHDOT"ï¼ˆ-Â·-Â·-Â·-ï¼‰ï¼Œ"DASHDOTDOT"ï¼ˆ-Â·Â·-Â·Â·-Â·Â·ï¼‰ï¼Œ"NULL"ï¼ˆä¸å¯è§ï¼‰
 extern "C" int setLineStyle(lua_State * L)
 {
     const char* style = lua_tostring(L, 1);
@@ -125,7 +125,7 @@ extern "C" int setLineStyle(lua_State * L)
     return 0;
 }
 
-// »æÖÆÏñËØµã£¬5²ÎÊı£ºx×ø±ê¡¢y×ø±ê¡¢R¡¢G¡¢B
+// ç»˜åˆ¶åƒç´ ç‚¹ï¼Œ5å‚æ•°ï¼šxåæ ‡ã€yåæ ‡ã€Rã€Gã€B
 extern "C" int drawPixel(lua_State * L)
 {
     int x = lua_tonumber(L, 1);
@@ -137,7 +137,7 @@ extern "C" int drawPixel(lua_State * L)
     return 0;
 }
 
-// »æÖÆÖ±Ïß£¬4²ÎÊı£ºÆğÊ¼Î»ÖÃx×ø±ê¡¢ÆğÊ¼Î»ÖÃy×ø±ê¡¢ÖÕÖ¹Î»ÖÃx×ø±ê¡¢ÖÕÖ¹Î»ÖÃy×ø±ê
+// ç»˜åˆ¶ç›´çº¿ï¼Œ4å‚æ•°ï¼šèµ·å§‹ä½ç½®xåæ ‡ã€èµ·å§‹ä½ç½®yåæ ‡ã€ç»ˆæ­¢ä½ç½®xåæ ‡ã€ç»ˆæ­¢ä½ç½®yåæ ‡
 extern "C" int drawLine(lua_State * L)
 {
     int x1 = lua_tonumber(L, 1);
@@ -148,7 +148,7 @@ extern "C" int drawLine(lua_State * L)
     return 0;
 }
 
-// »æÖÆÎŞÌî³äÔ²½Ç¾ØĞÎ£¬6²ÎÊı£º¾ØĞÎ×ó±ßÏß×ø±ê¡¢¾ØĞÎÉÏ±ßÏß×ø±ê¡¢¾ØĞÎÓÒ±ßÏß×ø±ê¡¢¾ØĞÎÏÂ±ßÏß×ø±ê¡¢Ô²½ÇÍÖÔ²¿í¶È¡¢Ô²½ÇÍÖÔ²¸ß¶È
+// ç»˜åˆ¶æ— å¡«å……åœ†è§’çŸ©å½¢ï¼Œ6å‚æ•°ï¼šçŸ©å½¢å·¦è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸Šè¾¹çº¿åæ ‡ã€çŸ©å½¢å³è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸‹è¾¹çº¿åæ ‡ã€åœ†è§’æ¤­åœ†å®½åº¦ã€åœ†è§’æ¤­åœ†é«˜åº¦
 extern "C" int drawRoundrect(lua_State * L)
 {
     int left = lua_tonumber(L, 1);
@@ -161,7 +161,7 @@ extern "C" int drawRoundrect(lua_State * L)
     return 0;
 }
 
-// »æÖÆÓĞÌî³äÔ²½Ç¾ØĞÎ£¬6²ÎÊı£º¾ØĞÎ×ó±ßÏß×ø±ê¡¢¾ØĞÎÉÏ±ßÏß×ø±ê¡¢¾ØĞÎÓÒ±ßÏß×ø±ê¡¢¾ØĞÎÏÂ±ßÏß×ø±ê¡¢Ô²½ÇÍÖÔ²¿í¶È¡¢Ô²½ÇÍÖÔ²¸ß¶È
+// ç»˜åˆ¶æœ‰å¡«å……åœ†è§’çŸ©å½¢ï¼Œ6å‚æ•°ï¼šçŸ©å½¢å·¦è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸Šè¾¹çº¿åæ ‡ã€çŸ©å½¢å³è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸‹è¾¹çº¿åæ ‡ã€åœ†è§’æ¤­åœ†å®½åº¦ã€åœ†è§’æ¤­åœ†é«˜åº¦
 extern "C" int drawFillRoundrect(lua_State * L)
 {
     int left = lua_tonumber(L, 1);
@@ -174,7 +174,7 @@ extern "C" int drawFillRoundrect(lua_State * L)
     return 0;
 }
 
-// »æÖÆÌî³äÎŞ±ß¿òÔ²½Ç¾ØĞÎ£¬6²ÎÊı£º¾ØĞÎ×ó±ßÏß×ø±ê¡¢¾ØĞÎÉÏ±ßÏß×ø±ê¡¢¾ØĞÎÓÒ±ßÏß×ø±ê¡¢¾ØĞÎÏÂ±ßÏß×ø±ê¡¢Ô²½ÇÍÖÔ²¿í¶È¡¢Ô²½ÇÍÖÔ²¸ß¶È
+// ç»˜åˆ¶å¡«å……æ— è¾¹æ¡†åœ†è§’çŸ©å½¢ï¼Œ6å‚æ•°ï¼šçŸ©å½¢å·¦è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸Šè¾¹çº¿åæ ‡ã€çŸ©å½¢å³è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸‹è¾¹çº¿åæ ‡ã€åœ†è§’æ¤­åœ†å®½åº¦ã€åœ†è§’æ¤­åœ†é«˜åº¦
 extern "C" int drawSolidRoundrect(lua_State * L)
 {
     int left = lua_tonumber(L, 1);
@@ -187,7 +187,7 @@ extern "C" int drawSolidRoundrect(lua_State * L)
     return 0;
 }
 
-// »æÖÆÎŞÌî³äÍÖÔ²£¬4²ÎÊı£ºÍÖÔ²ÍâÇĞ¾ØĞÎ×óÉÏ½Çx×ø±ê¡¢ÍÖÔ²ÍâÇĞ¾ØĞÎ×óÉÏ½Çy×ø±ê¡¢ÍÖÔ²ÍâÇĞ¾ØĞÎÓÒÏÂ½Çx×ø±ê¡¢ÍÖÔ²ÍâÇĞ¾ØĞÎÓÒÏÂ½Çy×ø±ê
+// ç»˜åˆ¶æ— å¡«å……æ¤­åœ†ï¼Œ4å‚æ•°ï¼šæ¤­åœ†å¤–åˆ‡çŸ©å½¢å·¦ä¸Šè§’xåæ ‡ã€æ¤­åœ†å¤–åˆ‡çŸ©å½¢å·¦ä¸Šè§’yåæ ‡ã€æ¤­åœ†å¤–åˆ‡çŸ©å½¢å³ä¸‹è§’xåæ ‡ã€æ¤­åœ†å¤–åˆ‡çŸ©å½¢å³ä¸‹è§’yåæ ‡
 extern "C" int drawEllipse(lua_State * L)
 {
     int left = lua_tonumber(L, 1);
@@ -198,7 +198,7 @@ extern "C" int drawEllipse(lua_State * L)
     return 0;
 }
 
-// »æÖÆÎŞÌî³äÍÖÔ²£¬4²ÎÊı£ºÍÖÔ²ÍâÇĞ¾ØĞÎ×óÉÏ½Çx×ø±ê¡¢ÍÖÔ²ÍâÇĞ¾ØĞÎ×óÉÏ½Çy×ø±ê¡¢ÍÖÔ²ÍâÇĞ¾ØĞÎÓÒÏÂ½Çx×ø±ê¡¢ÍÖÔ²ÍâÇĞ¾ØĞÎÓÒÏÂ½Çy×ø±ê
+// ç»˜åˆ¶æ— å¡«å……æ¤­åœ†ï¼Œ4å‚æ•°ï¼šæ¤­åœ†å¤–åˆ‡çŸ©å½¢å·¦ä¸Šè§’xåæ ‡ã€æ¤­åœ†å¤–åˆ‡çŸ©å½¢å·¦ä¸Šè§’yåæ ‡ã€æ¤­åœ†å¤–åˆ‡çŸ©å½¢å³ä¸‹è§’xåæ ‡ã€æ¤­åœ†å¤–åˆ‡çŸ©å½¢å³ä¸‹è§’yåæ ‡
 extern "C" int drawFillEllipse(lua_State * L)
 {
     int left = lua_tonumber(L, 1);
@@ -209,7 +209,7 @@ extern "C" int drawFillEllipse(lua_State * L)
     return 0;
 }
 
-// »æÖÆÌî³äÎŞ±ß¿òÍÖÔ²£¬4²ÎÊı£ºÍÖÔ²ÍâÇĞ¾ØĞÎ×óÉÏ½Çx×ø±ê¡¢ÍÖÔ²ÍâÇĞ¾ØĞÎ×óÉÏ½Çy×ø±ê¡¢ÍÖÔ²ÍâÇĞ¾ØĞÎÓÒÏÂ½Çx×ø±ê¡¢ÍÖÔ²ÍâÇĞ¾ØĞÎÓÒÏÂ½Çy×ø±ê
+// ç»˜åˆ¶å¡«å……æ— è¾¹æ¡†æ¤­åœ†ï¼Œ4å‚æ•°ï¼šæ¤­åœ†å¤–åˆ‡çŸ©å½¢å·¦ä¸Šè§’xåæ ‡ã€æ¤­åœ†å¤–åˆ‡çŸ©å½¢å·¦ä¸Šè§’yåæ ‡ã€æ¤­åœ†å¤–åˆ‡çŸ©å½¢å³ä¸‹è§’xåæ ‡ã€æ¤­åœ†å¤–åˆ‡çŸ©å½¢å³ä¸‹è§’yåæ ‡
 extern "C" int drawSolidEllipse(lua_State * L)
 {
     int left = lua_tonumber(L, 1);
@@ -220,7 +220,7 @@ extern "C" int drawSolidEllipse(lua_State * L)
     return 0;
 }
 
-// »æÖÆÎŞÌî³äÔ²£¬3²ÎÊı£ºÔ²ĞÄx×ø±ê¡¢Ô²ĞÄy×ø±ê¡¢°ë¾¶
+// ç»˜åˆ¶æ— å¡«å……åœ†ï¼Œ3å‚æ•°ï¼šåœ†å¿ƒxåæ ‡ã€åœ†å¿ƒyåæ ‡ã€åŠå¾„
 extern "C" int drawCircle(lua_State * L)
 {
     int x = lua_tonumber(L, 1);
@@ -230,7 +230,7 @@ extern "C" int drawCircle(lua_State * L)
     return 0;
 }
 
-// »æÖÆÓĞÌî³äÔ²£¬3²ÎÊı£ºÔ²ĞÄx×ø±ê¡¢Ô²ĞÄy×ø±ê¡¢°ë¾¶
+// ç»˜åˆ¶æœ‰å¡«å……åœ†ï¼Œ3å‚æ•°ï¼šåœ†å¿ƒxåæ ‡ã€åœ†å¿ƒyåæ ‡ã€åŠå¾„
 extern "C" int drawFillCircle(lua_State * L)
 {
     int x = lua_tonumber(L, 1);
@@ -240,7 +240,7 @@ extern "C" int drawFillCircle(lua_State * L)
     return 0;
 }
 
-// »æÖÆÌî³äÎŞ±ß¿òÔ²£¬3²ÎÊı£ºÔ²ĞÄx×ø±ê¡¢Ô²ĞÄy×ø±ê¡¢°ë¾¶
+// ç»˜åˆ¶å¡«å……æ— è¾¹æ¡†åœ†ï¼Œ3å‚æ•°ï¼šåœ†å¿ƒxåæ ‡ã€åœ†å¿ƒyåæ ‡ã€åŠå¾„
 extern "C" int drawSolidCircle(lua_State * L)
 {
     int x = lua_tonumber(L, 1);
@@ -250,7 +250,7 @@ extern "C" int drawSolidCircle(lua_State * L)
     return 0;
 }
 
-// »æÖÆÎŞÌî³ä¾ØĞÎ£¬4²ÎÊı£º¾ØĞÎ×ó±ßÏß×ø±ê¡¢¾ØĞÎÉÏ±ßÏß×ø±ê¡¢¾ØĞÎÓÒ±ßÏß×ø±ê¡¢¾ØĞÎÏÂ±ßÏß×ø±ê
+// ç»˜åˆ¶æ— å¡«å……çŸ©å½¢ï¼Œ4å‚æ•°ï¼šçŸ©å½¢å·¦è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸Šè¾¹çº¿åæ ‡ã€çŸ©å½¢å³è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸‹è¾¹çº¿åæ ‡
 extern "C" int drawRectangle(lua_State * L)
 {
     int left = lua_tonumber(L, 1);
@@ -261,7 +261,7 @@ extern "C" int drawRectangle(lua_State * L)
     return 0;
 }
 
-// »æÖÆÓĞÌî³ä¾ØĞÎ£¬4²ÎÊı£º¾ØĞÎ×ó±ßÏß×ø±ê¡¢¾ØĞÎÉÏ±ßÏß×ø±ê¡¢¾ØĞÎÓÒ±ßÏß×ø±ê¡¢¾ØĞÎÏÂ±ßÏß×ø±ê
+// ç»˜åˆ¶æœ‰å¡«å……çŸ©å½¢ï¼Œ4å‚æ•°ï¼šçŸ©å½¢å·¦è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸Šè¾¹çº¿åæ ‡ã€çŸ©å½¢å³è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸‹è¾¹çº¿åæ ‡
 extern "C" int drawFillRectangle(lua_State * L)
 {
     int left = lua_tonumber(L, 1);
@@ -272,7 +272,7 @@ extern "C" int drawFillRectangle(lua_State * L)
     return 0;
 }
 
-// »æÖÆÓĞÌî³äÎŞ±ß¿ò¾ØĞÎ£¬4²ÎÊı£º¾ØĞÎ×ó±ßÏß×ø±ê¡¢¾ØĞÎÉÏ±ßÏß×ø±ê¡¢¾ØĞÎÓÒ±ßÏß×ø±ê¡¢¾ØĞÎÏÂ±ßÏß×ø±ê
+// ç»˜åˆ¶æœ‰å¡«å……æ— è¾¹æ¡†çŸ©å½¢ï¼Œ4å‚æ•°ï¼šçŸ©å½¢å·¦è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸Šè¾¹çº¿åæ ‡ã€çŸ©å½¢å³è¾¹çº¿åæ ‡ã€çŸ©å½¢ä¸‹è¾¹çº¿åæ ‡
 extern "C" int drawSolidRectangle(lua_State * L)
 {
     int left = lua_tonumber(L, 1);
@@ -283,7 +283,7 @@ extern "C" int drawSolidRectangle(lua_State * L)
     return 0;
 }
 
-// ÉèÖÃµ±Ç°×ÖÌåÑùÊ½£¬3²ÎÊı£º×ÖÌå¸ß¶È¡¢×ÖÌå¿í¶È£¨0Îª×ÔÊÊÓ¦£©¡¢×ÖÌåÃû³Æ
+// è®¾ç½®å½“å‰å­—ä½“æ ·å¼ï¼Œ3å‚æ•°ï¼šå­—ä½“é«˜åº¦ã€å­—ä½“å®½åº¦ï¼ˆ0ä¸ºè‡ªé€‚åº”ï¼‰ã€å­—ä½“åç§°
 extern "C" int setTextStyle(lua_State * L)
 {
     int height = lua_tonumber(L, 1);
@@ -296,7 +296,7 @@ extern "C" int setTextStyle(lua_State * L)
     return 0;
 }
 
-// ÔÚÖ¸¶¨Î»ÖÃÊä³ö×Ö·û´®£¬3²ÎÊı£ºx×ø±ê¡¢y×ø±ê¡¢×Ö·û´®ÄÚÈİ
+// åœ¨æŒ‡å®šä½ç½®è¾“å‡ºå­—ç¬¦ä¸²ï¼Œ3å‚æ•°ï¼šxåæ ‡ã€yåæ ‡ã€å­—ç¬¦ä¸²å†…å®¹
 extern "C" int drawText(lua_State * L)
 {
     int x = lua_tonumber(L, 1);
@@ -309,7 +309,7 @@ extern "C" int drawText(lua_State * L)
     return 0;
 }
 
-// ÔÚÖ¸¶¨Î»ÖÃ»æÖÆÍ¼Æ¬£¬5²ÎÊı£ºx×ø±ê¡¢y×ø±ê¡¢Í¼Æ¬¿í¶È¡¢Í¼Æ¬¸ß¶È¡¢Í¼Æ¬Â·¾¶
+// åœ¨æŒ‡å®šä½ç½®ç»˜åˆ¶å›¾ç‰‡ï¼Œ5å‚æ•°ï¼šxåæ ‡ã€yåæ ‡ã€å›¾ç‰‡å®½åº¦ã€å›¾ç‰‡é«˜åº¦ã€å›¾ç‰‡è·¯å¾„
 extern "C" int drawImage(lua_State * L)
 {
     int x = lua_tonumber(L, 1);
@@ -326,7 +326,7 @@ extern "C" int drawImage(lua_State * L)
     return 0;
 }
 
-// ÔÚÖ¸¶¨Î»ÖÃ»æÖÆÍ¸Ã÷Í¼Æ¬£¬5²ÎÊı£ºx×ø±ê¡¢y×ø±ê¡¢Í¼Æ¬¿í¶È¡¢Í¼Æ¬¸ß¶È¡¢Í¼Æ¬Â·¾¶
+// åœ¨æŒ‡å®šä½ç½®ç»˜åˆ¶é€æ˜å›¾ç‰‡ï¼Œ5å‚æ•°ï¼šxåæ ‡ã€yåæ ‡ã€å›¾ç‰‡å®½åº¦ã€å›¾ç‰‡é«˜åº¦ã€å›¾ç‰‡è·¯å¾„
 extern "C" int drawTransImage(lua_State * L)
 {
     int x = lua_tonumber(L, 1);
@@ -377,8 +377,8 @@ extern "C" int drawTransImage(lua_State * L)
     return 0;
 }
 
-// Ìî³äÖ¸¶¨ÇøÓò£¬6²ÎÊı£ºÆğµãx×ø±ê¡¢Æğµãy×ø±ê¡¢R¡¢G¡¢B¡¢Ìî³äÀàĞÍ
-// Ìî³äÀàĞÍ¿ÉÑ¡ÖµÎª£º"BORDER"£¨Ìî³ä¶¯×÷·¢ÉúÔÚÖ¸¶¨ÑÕÉ«Î§³ÉµÄ·â±ÕÇøÓò£©£¬"SURFACE"£¨Ìî³ä¶¯×÷·¢ÉúÔÚÖ¸¶¨ÑÕÉ«µÄÁ¬Ğø±íÃæ£©
+// å¡«å……æŒ‡å®šåŒºåŸŸï¼Œ6å‚æ•°ï¼šèµ·ç‚¹xåæ ‡ã€èµ·ç‚¹yåæ ‡ã€Rã€Gã€Bã€å¡«å……ç±»å‹
+// å¡«å……ç±»å‹å¯é€‰å€¼ä¸ºï¼š"BORDER"ï¼ˆå¡«å……åŠ¨ä½œå‘ç”Ÿåœ¨æŒ‡å®šé¢œè‰²å›´æˆçš„å°é—­åŒºåŸŸï¼‰ï¼Œ"SURFACE"ï¼ˆå¡«å……åŠ¨ä½œå‘ç”Ÿåœ¨æŒ‡å®šé¢œè‰²çš„è¿ç»­è¡¨é¢ï¼‰
 extern "C" int floodFill(lua_State * L)
 {
     int x = lua_tonumber(L, 1);
@@ -398,16 +398,16 @@ extern "C" int floodFill(lua_State * L)
     return 0;
 }
 
-// ²¶»ñÊÂ¼ş£¬ÎŞ²ÎÊı
+// æ•è·äº‹ä»¶ï¼Œæ— å‚æ•°
 extern "C" int captureEvent(lua_State * L)
 {
     msg = GetMouseMsg();
     return 0;
 }
 
-// ÅĞ¶Ï½»»¥ÊÂ¼şÀàĞÍ£¬1²ÎÊı£ºÀàĞÍÃû
-// ¿ÉÑ¡ÖµÎª£º"MOUSEMOVE"£¨Êó±êÒÆ¶¯£©£¬"MOUSEWHELL"£¨Êó±ê¹öÂÖÒÆ¶¯£©£¬"LBUTTONDOWN"£¨Êó±ê×ó¼ü°´ÏÂ£©£¬"LBUTTONUP"£¨Êó±ê×ó¼üÌ§Æğ£©£¬"LBUTTONDBLCLK"£¨Êó±ê×ó¼üË«»÷£©£¬"MBUTTONDOWN"£¨Êó±êÖĞ¼ü°´ÏÂ£©£¬"MBUTTONUP"£¨Êó±êÖĞ¼üÌ§Æğ£©£¬"MBUTTONDBLCLK"£¨Êó±êÖĞ¼üË«»÷£©£¬"RBUTTONDOWN"£¨Êó±êÓÒ¼ü°´ÏÂ£©£¬"RBUTTONUP"£¨Êó±êÓÒ¼üÌ§Æğ£©£¬"RBUTTONDBLCLK"£¨Êó±êÓÒ¼üË«»÷£©£¬"CTRLDOWN"£¨Ctrl¼ü°´ÏÂ£©£¬"SHIFTDOWN"£¨Shift¼ü°´ÏÂ£©
-// 1¸ö·µ»ØÖµ£º0 - ²»ÊÇµ±Ç°ÊÂ¼ş£¬1 - ÊÇµ±Ç°ÊÂ¼ş£¬-1 - ²»´æÔÚµ±Ç°ÊÂ¼ş
+// åˆ¤æ–­äº¤äº’äº‹ä»¶ç±»å‹ï¼Œ1å‚æ•°ï¼šç±»å‹å
+// å¯é€‰å€¼ä¸ºï¼š"MOUSEMOVE"ï¼ˆé¼ æ ‡ç§»åŠ¨ï¼‰ï¼Œ"MOUSEWHELL"ï¼ˆé¼ æ ‡æ»šè½®ç§»åŠ¨ï¼‰ï¼Œ"LBUTTONDOWN"ï¼ˆé¼ æ ‡å·¦é”®æŒ‰ä¸‹ï¼‰ï¼Œ"LBUTTONUP"ï¼ˆé¼ æ ‡å·¦é”®æŠ¬èµ·ï¼‰ï¼Œ"LBUTTONDBLCLK"ï¼ˆé¼ æ ‡å·¦é”®åŒå‡»ï¼‰ï¼Œ"MBUTTONDOWN"ï¼ˆé¼ æ ‡ä¸­é”®æŒ‰ä¸‹ï¼‰ï¼Œ"MBUTTONUP"ï¼ˆé¼ æ ‡ä¸­é”®æŠ¬èµ·ï¼‰ï¼Œ"MBUTTONDBLCLK"ï¼ˆé¼ æ ‡ä¸­é”®åŒå‡»ï¼‰ï¼Œ"RBUTTONDOWN"ï¼ˆé¼ æ ‡å³é”®æŒ‰ä¸‹ï¼‰ï¼Œ"RBUTTONUP"ï¼ˆé¼ æ ‡å³é”®æŠ¬èµ·ï¼‰ï¼Œ"RBUTTONDBLCLK"ï¼ˆé¼ æ ‡å³é”®åŒå‡»ï¼‰ï¼Œ"CTRLDOWN"ï¼ˆCtrlé”®æŒ‰ä¸‹ï¼‰ï¼Œ"SHIFTDOWN"ï¼ˆShifté”®æŒ‰ä¸‹ï¼‰
+// 1ä¸ªè¿”å›å€¼ï¼š0 - ä¸æ˜¯å½“å‰äº‹ä»¶ï¼Œ1 - æ˜¯å½“å‰äº‹ä»¶ï¼Œ-1 - ä¸å­˜åœ¨å½“å‰äº‹ä»¶
 extern "C" int checkEventType(lua_State * L)
 {
     const char* eventType = lua_tostring(L, 1);
@@ -500,8 +500,8 @@ extern "C" int checkEventType(lua_State * L)
     return 1;
 }
 
-// »ñÈ¡µ±Ç°Êó±êÎ»ÖÃ£¬ÎŞ²ÎÊı
-// 2¸ö·µ»ØÖµ£ºx×ø±ê¡¢y×ø±ê
+// è·å–å½“å‰é¼ æ ‡ä½ç½®ï¼Œæ— å‚æ•°
+// 2ä¸ªè¿”å›å€¼ï¼šxåæ ‡ã€yåæ ‡
 extern "C" int getMousePosition(lua_State * L)
 {
     MOUSEMSG msg = GetMouseMsg();
@@ -510,35 +510,35 @@ extern "C" int getMousePosition(lua_State * L)
     return 2;
 }
 
-// ¿ªÊ¼ÅúÁ¿»æÍ¼£¬ÎŞ²ÎÊı
+// å¼€å§‹æ‰¹é‡ç»˜å›¾ï¼Œæ— å‚æ•°
 extern "C" int beginBatchDraw(lua_State * L)
 {
     BeginBatchDraw();
     return 0;
 }
 
-// Ö´ĞĞÎ´Íê³É»æÍ¼ÈÎÎñ£¬ÎŞ²ÎÊı
+// æ‰§è¡Œæœªå®Œæˆç»˜å›¾ä»»åŠ¡ï¼Œæ— å‚æ•°
 extern "C" int flushBatchDraw(lua_State * L)
 {
     FlushBatchDraw();
     return 0;
 }
 
-// ½áÊøÅúÁ¿»æÍ¼£¬ÎŞ²ÎÊı
+// ç»“æŸæ‰¹é‡ç»˜å›¾ï¼Œæ— å‚æ•°
 extern "C" int endBatchDraw(lua_State * L)
 {
     EndBatchDraw();
     return 0;
 }
 
-// ÔİÍ£³ÌĞò£¬ÎŞ²ÎÊı
+// æš‚åœç¨‹åºï¼Œæ— å‚æ•°
 extern "C" int pause(lua_State * L)
 {
     system("pause");
     return 0;
 }
 
-// ¹ÒÆğ³ÌĞòÖ¸¶¨Ê±¼ä£¬1²ÎÊı£º¹ÒÆğÊ±¼ä£¨µ¥Î»£ººÁÃë£©
+// æŒ‚èµ·ç¨‹åºæŒ‡å®šæ—¶é—´ï¼Œ1å‚æ•°ï¼šæŒ‚èµ·æ—¶é—´ï¼ˆå•ä½ï¼šæ¯«ç§’ï¼‰
 extern "C" int sleep(lua_State * L)
 {
     int delay = lua_tonumber(L, 1);
