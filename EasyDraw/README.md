@@ -1,5 +1,8 @@
 # EasyDraw开发文档
 
+编译需要第三方库[EasyX](https://easyx.cn/)支持
+***
+
 > ## Init
 初始化绘图窗口
 ```Lua
